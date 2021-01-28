@@ -80,7 +80,7 @@ export default {
 
       try {
         if (formData.acceptedSubmission === false) {
-          throw "Please accept the submission of your information";
+          throw new Error("Please accept the submission of your information");
         }
 
         await this.$axios.$post(
@@ -91,7 +91,8 @@ export default {
 
         setTimeout(() => this.$router.push("view_all_users"), 1000);
       } catch (err) {
-        this.errMessageToUser = err;
+        //alert(err.message);
+        this.errMessageToUser = err.message;
         this.successMessageToUser = "";
       }
     },
